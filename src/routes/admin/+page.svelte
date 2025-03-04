@@ -103,4 +103,17 @@
     <input type="number" step="0.01" bind:value={newProduct.price} placeholder="Price" class="shadow appearance-none border rounded w-full py-2 px-3 mb-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required />
     <button type="submit" class="p-2 bg-blue-500 text-white rounded">{editingIndex !== null ? 'Update' : 'Add'} Product</button>
   </form>
+
+  <div class="product-list">
+    {#each products as product, index}
+      <div class="product-item bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex items-center">
+        <img src={product.image} alt={product.title} class="w-16 h-16 object-cover mr-4" />
+        <div class="flex-1">
+          <h2 class="text-xl font-bold">{product.title}</h2>
+        </div>
+        <button onclick={() => editProduct(index)} class="p-2 bg-yellow-500 text-white rounded mr-2">Edit</button>
+        <button onclick={() => deleteProduct(index)} class="p-2 bg-red-500 text-white rounded">Delete</button>
+      </div>
+    {/each}
+  </div>
 </div>
